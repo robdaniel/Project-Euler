@@ -1,114 +1,15 @@
 pence = 200
-coins = [200, 100, 50, 20, 10, 5, 2, 1]
-combos = 0
-multiply = 2
-place = 0
-curr = 0
-count = 0
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
 
-for each in coins:
-	curr = each
-	if curr == pence:
-		combos += 1
-	if curr < pence:
-		while curr*multiply <= pence:
-			curr = curr*multiply
-			multiply += 1
-		multiply = 2
-		if curr == pence:
-			combos += 1
-		else:
-			while place < 7:
-				place += 1
-				if curr + coins[place] == pence:
-					combos += 1
-				while curr + (coins[place])*multiply <= pence:
-					curr = curr + coins[place]*multiply
-					multiply += 1
-				multiply = 2
-				if curr == pence:
-					combos += 1
+combos = []
 
+for each in range(0, pence + 1):
+	combos.append(0)
 
+combos[0] = 1
 
+for i in range(0, len(coins)):
+	for j in range(coins[i], pence+1):
+		combos[j] += combos[j - coins[i]]
 
-
-
-				# place += 1
-				# if curr + coins[place] == pence:
-				# 	combos += 1
-				# while curr + (coins[place])*multiply <= pence:
-				# 	curr = curr + coins[place]*multiply
-				# 	multiply += 1
-				# multiply = 2
-				# if curr == pence:
-				# 	combos += 1
-				# else:
-				# 	place += 1
-				# 	if curr + coins[place] == pence:
-				# 		combos += 1
-				# 	while curr + (coins[place])*multiply <= pence:
-				# 		curr = curr + coins[place]*multiply
-				# 		multiply += 1
-				# 	multiply = 2
-				# 	if curr == pence:
-				# 		combos += 1
-				# 	else:
-				# 		place += 1
-				# 		if curr + coins[place] == pence:
-				# 			combos += 1
-				# 		while curr + (coins[place])*multiply <= pence:
-				# 			curr = curr + coins[place]*multiply
-				# 			multiply += 1
-				# 		multiply = 2
-				# 		if curr == pence:
-				# 			combos += 1
-				# 		else:
-				# 			place += 1
-				# 			if curr + coins[place] == pence:
-				# 				combos += 1
-				# 			while curr + (coins[place])*multiply <= pence:
-				# 				curr = curr + coins[place]*multiply
-				# 				multiply += 1
-				# 			multiply = 2
-				# 			if curr == pence:
-				# 				combos += 1
-				# 			else:
-				# 				place += 1
-				# 				if curr + coins[place] == pence:
-				# 					combos += 1
-				# 				while curr + (coins[place])*multiply <= pence:
-				# 					curr = curr + coins[place]*multiply
-				# 					multiply += 1
-				# 				multiply = 2
-				# 				if curr == pence:
-				# 					combos += 1
-				# 				else:
-				# 					place += 1
-				# 					if curr + coins[place] == pence:
-				# 						combos += 1
-				# 					while curr + (coins[place])*multiply <= pence:
-				# 						curr = curr + coins[place]*multiply
-				# 						multiply += 1
-				# 					multiply = 2
-				# 					if curr == pence:
-				# 						combos += 1
-				# 					else:
-				# 						place += 1
-				# 						if curr + coins[place] == pence:
-				# 							combos += 1
-				# 						while curr + (coins[place])*multiply <= pence:
-				# 							curr = curr + coins[place]*multiply
-				# 							multiply += 1
-				# 						multiply = 2
-				# 						if curr == pence:
-				# 							combos += 1
-	count += 1
-	place = count									
-
-print combos
-
-
-# def countCoinCombs(left, i, comb, add):
-# 	if add: comb.append(add)
-# 	if left == 0 or (i + 1) == len(denominations)
+print combos[pence]

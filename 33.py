@@ -1,11 +1,11 @@
-result = 0
+result = 1
+numerator = 1
+denom = 1
 
-for i in range(11,100):
-	for j in range(10,100):
-		if (i/10) == (j%10) and j%10 != 0:
-			test1 = (i/10)/(j%10)
-			test2 = i/j
-			if test1 == test2:
-				result *= j
-
-print "Answer: %d" % result
+for i in range(1, 10):
+	for each in range(2,10):
+		for each2 in range(1,each):
+			if ((each2 * 10 + i) * each) == ((i * 10 + each) * each2):
+				denom *= each
+				numerator *= each2
+print numerator, "/", denom, "->", denom/numerator
